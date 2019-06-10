@@ -1,0 +1,18 @@
+$size: 18px;
+
+.window-button {
+  width: 35px;
+  height: 25px;
+
+  line-height: 25px;
+
+  -webkit-app-region: no-drag;
+}
+
+.window-button-mat-icon-size {
+  width: $size;
+  height: $size;
+
+  font-size: $size;
+  line-height: $size !important;
+}

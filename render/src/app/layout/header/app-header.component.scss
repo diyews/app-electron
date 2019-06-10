@@ -1,0 +1,27 @@
+@import "../../../styles/variables";
+
+.header {
+  position: relative;
+
+  width: 100%;
+  height: $header-height;
+  padding-right: 115px;
+
+  background: #673ab7;
+
+  display: flex;
+
+  -webkit-app-region: drag
+}
+
+.window-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: $header-height;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}

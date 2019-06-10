@@ -1,0 +1,16 @@
+<div class="item">
+	<img [src]="item?.article_pic_url" class="item__img" alt="" width="200" height="200" (click)="openWebview()"/>
+	<div class="item__title">{{item.article_title}}</div>
+	<div class="item__price">{{item.article_price}}</div>
+	<div class="frow row-between">
+		<span class="item__name">{{item.article_referrals}}</span>
+		<span>{{item.article_display_date}}</span>
+	</div>
+	<div class="item__content">
+		{{item.article_content}}
+	</div>
+	<div class="item__footer">
+		<span>赞{{item.article_rating}}</span>
+		<span>评论{{item.article_comment}}</span>
+	</div>
+</div>

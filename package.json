@@ -1,0 +1,24 @@
+{
+  "name": "app-electron",
+  "version": "1.0.0",
+  "description": "Aa Electron application",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "debug": "electron --inspect-brk=5858 .",
+    "serve": "tsc-watch --onSuccess \"electron .\"",
+    "serve:debug": "tsc-watch --onSuccess \"electron --inspect-brk=5858 .\""
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "diyews"
+  ],
+  "author": "diyews",
+  "license": "",
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "tsc-watch": "^2.2.1",
+    "typescript": "^3.5.1"
+  }
+}

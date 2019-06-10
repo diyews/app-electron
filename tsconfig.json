@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "sourceMap": true,
+    "outDir": "./main"
+  },
+  "include": [
+    "./main-src/main.ts",
+    "./main-src/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

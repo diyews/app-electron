@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline' 'self' http://localhost:4200 ws://localhost:4200">
+  <title>Render</title>
+  <base href="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+  <script>
+    window.__isDev = !process.mainModule.filename.includes('app.asar');
+    if (window.__isDev) {
+      const body = document.querySelector('body');
+      ['runtime', 'polyfills', 'styles', 'vendor', 'main', /* hack */ 'http://localhost:4200/webpack-dev-server'].forEach(o => {
+        const tag = document.createElement('script');
+        tag.src = `${o}.js`;
+        body.append(tag);
+      });
+    }
+  </script>
+</body>
+</html>
