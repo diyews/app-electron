@@ -1,6 +1,5 @@
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, session } from 'electron';
-import * as path from 'path';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,45 +7,45 @@ let mainWindow: BrowserWindow;
 
 global.__isDev = !process.mainModule.filename.includes('app.asar');
 
-  function createWindow() {
-    // Create the browser window.
-    mainWindow = new BrowserWindow({
-      width: 1200,
-      height: 800,
-      webPreferences: {
-        nodeIntegration: true,
-        webviewTag: true,
-      },
-      frame: false,
+function createWindow() {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: true,
+      webviewTag: true,
+    },
+    frame: false,
+  });
+
+  // and load the index.html of the app.
+  if (global.__isDev) {
+    mainWindow.loadFile('./render/src/index.html');
+    const pathReg = /.*?\/render\/src\/((?!index\.html)(.*))/;
+    session.defaultSession.webRequest.onBeforeRequest({ urls: ['file:///*'] }, (detail, cb) => {
+      const res: any = {};
+      const matched = detail.url.match(pathReg);
+      if (matched) {
+        res.redirectURL = `http://localhost:4200/${matched[1]}`;
+      }
+      cb(res);
     });
+  } else {
+    mainWindow.loadFile('render-release/index.html');
+  }
 
-    // and load the index.html of the app.
-    if (global.__isDev) {
-      mainWindow.loadFile('./render/src/index.html');
-      const pathReg = /.*?\/render\/src\/((?!index\.html)(.*))/;
-      session.defaultSession.webRequest.onBeforeRequest({ urls: ['file:///*'] }, (detail, cb) => {
-        const res: any = {};
-        const matched = detail.url.match(pathReg);
-        if (matched) {
-          res.redirectURL = `http://localhost:4200/${matched[1]}`;
-        }
-        cb(res);
-      });
-    } else {
-      mainWindow.loadFile('render-release/index.html');
-    }
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
 
-    // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
-
-    // Emitted when the window is closed.
-    mainWindow.on('closed', function () {
-      // Dereference the window object, usually you would store windows
-      // in an array if your app supports multi windows, this is the time
-      // when you should delete the corresponding element.
-      mainWindow = null;
-    });
-  };
+  // Emitted when the window is closed.
+  mainWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    mainWindow = null;
+  });
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
