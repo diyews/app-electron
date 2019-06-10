@@ -15,7 +15,7 @@
     window.__isDev = !process.mainModule.filename.includes('app.asar');
     if (window.__isDev) {
       const body = document.querySelector('body');
-      ['runtime', 'polyfills', 'styles', 'vendor', 'main', /* hack */ 'http://localhost:4200/webpack-dev-server'].forEach(o => {
+      ['runtime', 'polyfills', 'styles', 'vendor', 'main', /* hack *//* 'http://localhost:4200/webpack-dev-server'*/].forEach(o => {
         const tag = document.createElement('script');
         tag.src = `${o}.js`;
         body.append(tag);

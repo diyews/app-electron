@@ -4,7 +4,13 @@
   "description": "An Electron application",
   "main": "main-release/main.js",
   "build": {
-    "appId": "ws.diye,"
+    "appId": "ws.diye",
+    "files": [
+      "!render${/*}",
+      "!tsconfig.json",
+      "!main${/*}",
+      "!main-release/**/*.js.map"
+    ]
   },
   "nsis": {
     "oneClick": true
