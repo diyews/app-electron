@@ -3,11 +3,11 @@
     "module": "commonjs",
     "target": "es2015",
     "sourceMap": true,
-    "outDir": "./main"
+    "outDir": "./main-release"
   },
   "include": [
-    "./main-src/main.ts",
-    "./main-src/*.d.ts"
+    "./main/main.ts",
+    "./main/*.d.ts"
   ],
   "exclude": [
     "node_modules"

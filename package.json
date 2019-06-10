@@ -1,11 +1,18 @@
 {
   "name": "app-electron",
   "version": "1.0.0",
-  "description": "Aa Electron application",
-  "main": "main/main.js",
+  "description": "An Electron application",
+  "main": "main-release/main.js",
+  "build": {
+    "appId": "ws.diye,"
+  },
+  "nsis": {
+    "oneClick": true
+  },
   "scripts": {
     "start": "electron .",
     "debug": "electron --inspect-brk=5858 .",
+    "pack": "tsc && electron-builder --dir",
     "serve": "tsc-watch --onSuccess \"electron .\"",
     "serve:debug": "tsc-watch --onSuccess \"electron --inspect-brk=5858 .\""
   },
@@ -18,6 +25,7 @@
   "license": "",
   "devDependencies": {
     "electron": "^5.0.2",
+    "electron-builder": "^20.43.0",
     "tsc-watch": "^2.2.1",
     "typescript": "^3.5.1"
   }

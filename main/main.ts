@@ -33,7 +33,7 @@ global.__isDev = !process.mainModule.filename.includes('app.asar');
         cb(res);
       });
     } else {
-      mainWindow.loadFile('main/index.html');
+      mainWindow.loadFile('render-release/index.html');
     }
 
     // Open the DevTools.
