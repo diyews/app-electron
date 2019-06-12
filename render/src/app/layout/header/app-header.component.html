@@ -1,5 +1,5 @@
 <div class="header">
-	<button mat-icon-button color="accent" (click)="back()" style="height: 25px; line-height: 25px; -webkit-app-region: no-drag;">
+	<button mat-icon-button color="accent" (click)="back()" [hidden]="currentUrl === '/'" style="height: 25px; line-height: 25px; -webkit-app-region: no-drag;">
 		<mat-icon class="window-button-mat-icon-size" aria-label="minimize">keyboard_backspace</mat-icon>
 	</button>
 	<div class="window-buttons">

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmzdmModule } from './lighthouse/smzdm/smzdm.module';
 import { LayoutModule } from './layout/layout.module';
 import { MatDialogModule } from '@angular/material';
+import { HomeModule } from './lighthouse/home/home.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatDialogModule } from '@angular/material';
 
     MatDialogModule,
     LayoutModule,
+    HomeModule,
     SmzdmModule,
   ],
   providers: [],
