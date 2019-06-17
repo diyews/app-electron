@@ -8,6 +8,7 @@ import { SmzdmModule } from './lighthouse/smzdm/smzdm.module';
 import { LayoutModule } from './layout/layout.module';
 import { MatDialogModule } from '@angular/material';
 import { HomeModule } from './lighthouse/home/home.module';
+import { ZhihuModule } from './lighthouse/zhihu/zhihu.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomeModule } from './lighthouse/home/home.module';
     LayoutModule,
     HomeModule,
     SmzdmModule,
+    ZhihuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

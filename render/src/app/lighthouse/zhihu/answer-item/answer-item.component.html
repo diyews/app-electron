@@ -1,0 +1,39 @@
+<div class="zhihu-pre">
+  <div *ngIf="!isQA" class="frow items-center zhihu-pre__title">
+    <div>{{item?.question?.title}}</div>
+  </div>
+  <div class="frow row-start items-center mb-10">
+    <img [src]="item.author.avatar_url" width="34" height="34" alt="">
+    <span>{{item.author.name}}</span>
+    <i class="material-icons">thumb_up</i>
+    <span>{{item.voteup_count}}</span>
+  </div>
+  <div *ngIf="!item.__more; else itemContent" class="width-100 zhihu-pre__content clearfix">
+    <img class="frow zhihu-pre__image pull-left" [src]="item.thumbnail" alt="">
+    {{item.excerpt_new}}
+  </div>
+  <ng-template #itemContent>
+    <div class="zhihu-target-content" [innerHTML]="item.content"></div>
+  </ng-template>
+  <div class="frow zhihu-pre__footer">
+    <div class="frow items-center">
+      <div class="zhihu-pre__data-count">
+        <i class="material-icons">thumb_up</i>
+        <span>{{item.voteup_count}}</span>
+      </div>
+      <div class="zhihu-pre__data-count">
+        <i class="material-icons">visibility</i>
+        <span>{{$any(item).visited_count}}</span>
+      </div>
+      <div class="zhihu-pre__data-count">
+        <i class="material-icons">message</i>
+        <span>{{item.comment_count}}</span>
+      </div>
+    </div>
+    <div class="frow items-center">
+      {{item.created_time == item.updated_time ? '发布' : '更新'}}于
+      {{item.updated_time * 1e3 | date: 'yyyy-MM-dd HH:mm'}}
+    </div>
+    <button mat-stroked-button class="zhihu-pre__collapse-button" (click)="item.__more = !item.__more">{{item.__more ? 'Collapse' : 'More'}}</button>
+  </div>
+</div>

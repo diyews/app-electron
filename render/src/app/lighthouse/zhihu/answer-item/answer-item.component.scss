@@ -1,0 +1,59 @@
+%zhihu-item {
+  padding: 15px;
+  margin: 15px;
+
+  background: #fbfcff;
+  border: 1px solid #c2d5ff;
+  border-radius: 10px;
+}
+
+.zhihu-pre {
+  @extend %zhihu-item;
+
+  &__title {
+    margin-bottom: 10px;
+
+    font-weight: bold;
+  }
+
+  &__content {
+    margin-bottom: 10px;
+
+    line-height: 1.5em;
+    text-indent: 2em;
+  }
+
+  &__image {
+    width: auto;
+    height: auto;
+    max-height: 100px;
+
+    margin-right: 10px;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+
+    font-size: 14px;
+
+    background: #fbfcff;
+    color: #aaa;
+  }
+
+  &__data-count {
+    margin-right: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__collapse-button {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+
+    line-height: 30px;
+  }
+}

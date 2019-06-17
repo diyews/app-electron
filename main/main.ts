@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, session } from 'electron';
+import { setCookies } from './cookies';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,13 +9,16 @@ let mainWindow: BrowserWindow;
 global.__isDev = !process.mainModule.filename.includes('app.asar');
 
 function createWindow() {
+  setCookies();
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1000,
+    height: 720,
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true,
+      nativeWindowOpen: true,
     },
     frame: false,
   });
@@ -36,7 +40,7 @@ function createWindow() {
   }
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

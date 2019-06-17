@@ -1,0 +1,16 @@
+<div class="fill-in">
+  <div #scrollElement appAwayBottom (closeBottom)="fetch()" class="frow fill-in overflow-auto">
+    <div class="col-md-8-12">
+      <div *ngFor="let item of list">
+        <app-answer-item [item]="item" [scrollElement]="scrollElement"></app-answer-item>
+        <!--<div class="frow row-start items-center mb-10">
+          <img [src]="item.author.avatar_url" alt="">
+          <span>{{item.author.name}}</span>
+          <i class="material-icons">thumb_up</i>
+          <span>{{item.voteup_count}}</span>
+        </div>
+        <div class="zhihu-target-content" [ngClass]="{'zhihu-target-content__collapse': !item.__collapse}" [innerHTML]="item.content"></div>-->
+      </div>
+    </div>
+  </div>
+</div>
