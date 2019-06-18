@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ZhihuService } from '../zhihu.service';
 import { Answer } from '../models/AnswerResponse.model';
-import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-answer',
@@ -14,6 +13,7 @@ export class AnswerComponent implements OnInit {
   aId: number;
   list: Answer[] = [];
   listLoading = false;
+  viewedSet = new Set<number>();
 
   constructor(private activatedRouter: ActivatedRoute,
               private zhihuService: ZhihuService,
@@ -23,7 +23,15 @@ export class AnswerComponent implements OnInit {
     const params = this.activatedRouter.snapshot.params;
     this.qId = +params.questionId;
     this.aId = +params.answerId;
-    this.fetch();
+
+    // First load local data, then request server
+    this.zhihuService.fetchViewedAnswerByQuestionId(this.qId)
+      .then(data => {
+        data.docs.forEach(o => {
+          this.viewedSet.add(+o._id);
+        });
+        this.fetch();
+      });
   }
 
   fetch() {
@@ -32,12 +40,15 @@ export class AnswerComponent implements OnInit {
     }
     this.listLoading = true;
     this.zhihuService.fetchAnswer({ questionId: this.qId })
-      .pipe(
-        finalize(() => this.listLoading = false)
-      )
-      .subscribe(data => {
-        console.log(data);
-        this.list = this.list.concat(data.data);
+      .then(data => {
+        const list = data.data.filter(answer => !this.viewedSet.has(answer.id));
+        this.list = this.list.concat(list);
+        if (this.list.length < 6) {
+          setTimeout(() => this.fetch());
+        }
+      })
+      .finally(() => {
+        this.listLoading = false;
       });
   }
 }

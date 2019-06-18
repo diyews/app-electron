@@ -1,5 +1,5 @@
 export interface AnswerResponse {
-  data?: (Answer)[] | null;
+  data: (Answer)[] | null;
   paging: AnswerResponsePaging;
 }
 export interface Answer {
@@ -23,6 +23,7 @@ export interface Answer {
   comment_permission: string;
   can_comment: CanComment;
   reshipment_settings: string;
+  _content: string;
   content: string;
   editable_content: string;
   excerpt: string;

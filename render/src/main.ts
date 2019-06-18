@@ -2,9 +2,16 @@ import 'hammerjs';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+import { AppModule } from '@app/app.module';
 import { environment } from './environments/environment';
 import { hmrBootstrap } from './hmr';
+
+// @ts-ignore
+import PouchDB from 'pouchdb';
+// @ts-ignore
+import PouchDBFind from 'pouchdb-find';
+
+PouchDB.plugin(PouchDBFind);
 
 if (environment.production) {
   enableProdMode();

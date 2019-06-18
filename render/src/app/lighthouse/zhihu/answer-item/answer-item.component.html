@@ -4,9 +4,7 @@
   </div>
   <div class="frow row-start items-center mb-10">
     <img [src]="item.author.avatar_url" width="34" height="34" alt="">
-    <span>{{item.author.name}}</span>
-    <i class="material-icons">thumb_up</i>
-    <span>{{item.voteup_count}}</span>
+    <span class="zhihu-pre__name">{{item.author.name}}</span>
   </div>
   <div *ngIf="!item.__more; else itemContent" class="width-100 zhihu-pre__content clearfix">
     <img class="frow zhihu-pre__image pull-left" [src]="item.thumbnail" alt="">
@@ -34,6 +32,7 @@
       {{item.created_time == item.updated_time ? '发布' : '更新'}}于
       {{item.updated_time * 1e3 | date: 'yyyy-MM-dd HH:mm'}}
     </div>
-    <button mat-stroked-button class="zhihu-pre__collapse-button" (click)="item.__more = !item.__more">{{item.__more ? 'Collapse' : 'More'}}</button>
+    <button mat-stroked-button class="zhihu-pre__collapse-button" (click)="collapse()">{{item.__more ? 'Collapse' : 'More'}}</button>
+    <button *ngIf="docPutResult?.ok" mat-stroked-button class="zhihu-pre__collapse-button" (click)="unread()">Unread</button>
   </div>
 </div>

@@ -27,6 +27,7 @@ export interface RecommendAnswer {
   type: string;
   url: string;
   author: Author;
+  _content: string;
   content: string;
   created_time: number;
   updated_time: number;

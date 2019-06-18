@@ -9,10 +9,18 @@
 
 .zhihu-pre {
   @extend %zhihu-item;
+  padding-bottom: 0;
 
   &__title {
     margin-bottom: 10px;
 
+    font-weight: bold;
+  }
+
+  &__name {
+    margin: 0 8px;
+
+    font-size: 18px;
     font-weight: bold;
   }
 
@@ -34,6 +42,8 @@
   &__footer {
     position: sticky;
     bottom: 0;
+
+    padding-bottom: 15px;
 
     font-size: 14px;
 
