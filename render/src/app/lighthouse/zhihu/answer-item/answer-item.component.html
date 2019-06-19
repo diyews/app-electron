@@ -1,6 +1,9 @@
 <div class="zhihu-pre">
   <div *ngIf="!isQA" class="frow items-center zhihu-pre__title">
-    <div>{{item?.question?.title}}</div>
+    <a *ngIf="item?.question?.id; else titleElse" [routerLink]="'./answer/' + item.question.id">{{item?.question?.title}}</a>
+    <ng-template #titleElse>
+      <div>{{item?.title}}</div>
+    </ng-template>
   </div>
   <div class="frow row-start items-center mb-10">
     <img [src]="item.author.avatar_url" width="34" height="34" alt="">

@@ -4,7 +4,7 @@ import { Directive, ElementRef, EventEmitter, Input, NgZone, OnInit, Output } fr
   selector: '[appAwayBottom]'
 })
 export class AwayBottomDirective implements OnInit {
-  @Input() distance = 120;
+  @Input() distance = 180;
   @Output() closeBottom = new EventEmitter();
 
   constructor(private el: ElementRef,

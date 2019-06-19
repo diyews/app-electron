@@ -39,8 +39,23 @@ function createWindow() {
     mainWindow.loadFile('render-release/index.html');
   }
 
+  mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures) => {
+    if (url.match(/(^http)|(^\/\/)/)) {
+      Object.assign(options, {
+        frame: true,
+      });
+      options.webPreferences = Object.assign(options.webPreferences || {}, {
+        nodeIntegration: false,
+        devTools: true,
+      });
+      event.preventDefault();
+      (event as any).newGuest = new BrowserWindow(options);
+      // (event as any).newGuest.removeMenu();
+    }
+  });
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

@@ -76,7 +76,6 @@ export class ZhihuService {
         this.answerPaging = pagingDoc.paging;
         url = this.answerPaging.next;
       } catch (e) {
-        console.error(e);
       }
     } else {
       url = this.answerPaging.next;

@@ -1,7 +1,7 @@
-<div class="fill-in frow justify-around zhihu-page">
+<div #scrollElement appAwayBottom (closeBottom)="fetchRecommend()" class="fill-in frow justify-around zhihu-page">
   <div class="col-md-8-12">
     <div *ngFor="let item of list;">
-      <app-answer-item [item]="item.target"></app-answer-item>
+      <app-answer-item [item]="item.target" [scrollElement]="scrollElement"></app-answer-item>
     </div>
   </div>
 </div>

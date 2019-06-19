@@ -55,10 +55,12 @@ export class AnswerItemComponent implements OnInit {
   collapse() {
     const item = this.item;
     item.__more = !item.__more;
-    this.scrollElement.scrollTo({
-      top: this.scrollElement.scrollTop + (this.el.nativeElement as HTMLElement).getBoundingClientRect().top,
-      behavior: 'smooth',
-    });
+    if (this.scrollElement) {
+      this.scrollElement.scrollTo({
+        top: this.scrollElement.scrollTop + (this.el.nativeElement as HTMLElement).getBoundingClientRect().top,
+        behavior: 'smooth',
+      });
+    }
   }
 
   unread() {
